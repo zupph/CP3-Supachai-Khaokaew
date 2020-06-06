@@ -25,11 +25,13 @@ def priceCalculator():
     price2 = int(input("Second Product Price : "))
     return vatCalculator(price1 + price2)
 
-if login() == True:
-    showMenu()
-    userSelected = menuSelect()
-    if userSelected == 1:
-        totalPrice = int(input("please enter total price : "))
-        print(vatCalculator(totalPrice))
-    elif userSelected == 2:
-        print(priceCalculator())
+for x in range(3):
+    if login() == True:
+        showMenu()
+        userSelected = menuSelect()
+        if userSelected == 1:
+            totalPrice = int(input("please enter total price : "))
+            print(vatCalculator(totalPrice))
+        elif userSelected == 2:
+            print(priceCalculator())
+        break
