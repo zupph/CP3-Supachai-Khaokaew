@@ -1,7 +1,7 @@
 from forex_python.converter import CurrencyCodes, CurrencyRates
 from tkinter import *
 from tkinter import ttk
-import datetime
+import tkinter.font as font
 
 
 def text_currency_name(curr_code):
@@ -12,6 +12,8 @@ def text_currency_name(curr_code):
 
 def text_rate(base, quote):
     rate = currency_rate.get_rate(base_currency_combobox.get(), quote_currency_combobox.get())
+    my_font = font.Font(size=30)
+    currency_rate_label['font'] = my_font
     currency_rate_label.configure(text=rate)
 
 
@@ -35,7 +37,7 @@ for curr in currency_rate.get_rates("USD"):
 currency.sort()
 
 main_window = Tk()
-main_window.geometry("300x200")
+main_window.geometry("300x150")
 base_currency_label = Label(main_window, text="Base Currency")
 base_currency_label.grid(row=0, column=0)
 quote_currency_label = Label(main_window, text="Quote Currency")
@@ -54,8 +56,8 @@ quote_currency_combobox.current(31)
 quote_currency_name_label.configure(text=text_currency_name(quote_currency_combobox.get()))
 base_currency_combobox.bind("<<ComboboxSelected>>", show_base_currency_name)
 quote_currency_combobox.bind("<<ComboboxSelected>>", show_quote_currency_name)
-currency_rate_label = Label(main_window, width=40, font=10)
-currency_rate_label.place(x=0, y=100)
+currency_rate_label = Label(main_window, width=13)
+currency_rate_label.place(x=0, y=65)
 text_rate(base_currency_combobox.get(), quote_currency_combobox.get())
 
 main_window.mainloop()
